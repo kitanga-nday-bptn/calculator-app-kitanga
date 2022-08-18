@@ -1,7 +1,7 @@
 import { Backspace } from "@mui/icons-material";
 import { Container } from "@mui/material";
-import { StyledButton } from "./StyledButton";
-import { StyledStack } from "./StyledStack";
+import { StyledButton } from "../StyledButton/StyledButton";
+import { StyledStack } from "../StyledStack/StyledStack";
 
 export function Buttons() {
     return (

@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Operations, parseStack } from './utils/parseStack';
 import { ColorModeContextProvider } from './theme/ColorModeContext';
-import { Wrapper } from './components/Wrapper';
+import { Wrapper } from './components/Wrapper/Wrapper';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

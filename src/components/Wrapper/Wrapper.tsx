@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material";
 import styled from "styled-components";
-import { useColorMode } from "../hooks/useColorMode";
+import { useColorMode } from "../../hooks/useColorMode";
 
 export const Wrapper = ({ children }: any) => {
     const theme = useTheme()

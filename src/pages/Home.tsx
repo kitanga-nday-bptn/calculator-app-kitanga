@@ -1,4 +1,4 @@
-import { Buttons } from "../components/Calculator";
+import { Buttons } from "../components/Calculator/Calculator";
 
 export function Calculator() {
     // TODO:
