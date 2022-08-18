@@ -7,7 +7,7 @@ export function Buttons() {
     return (
         <Container sx={{
             maxWidth: '375px !important',
-            height: '50%',
+            height: '70%',
             flexGrow: 1,
         }}>
             <StyledStack>
@@ -43,8 +43,8 @@ export function Buttons() {
             </StyledStack>
             <br />
             <StyledStack>
-                <StyledButton variant="contained">0</StyledButton>
                 <StyledButton variant="outlined">.</StyledButton>
+                <StyledButton variant="contained">0</StyledButton>
                 <StyledButton color="success" variant="contained">=</StyledButton>
                 <StyledButton variant="outlined">/</StyledButton>
             </StyledStack>
