@@ -18,9 +18,7 @@ export function parseStack(_stack: StackType): number | undefined {
     // const stack = convertStack(_stack);
     const valueArray = _stack.concat([]);
 
-    // console.log(valueArray.join(''));
-
-    if (valueArray.length === 1) {
+    if (valueArray.length === 1 && !Array.isArray(valueArray[0])) {
         return valueArray[0] as number;
     }
 

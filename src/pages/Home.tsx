@@ -16,15 +16,11 @@ interface IState {
 }
 
 export function Home() {
-    // const [input, updateInput] = useInput();
     const [state, setState] = useState<IState>({
         // input: `2.3,"+",[8,"-",6],"+",3,"*",[3,"+",[8,"*",9]]`,
         input: ``,
         output: '',
-        // lastInputWasOpp: true,
-        // bracketsOpen: false,
     });
-    // const [lastInputWasOpp, setLastInputWasOpp] = useState(true);
 
     const buttonPressed = (val: number | string) => {
         const isFirstValue = state.input.length === 0;
@@ -40,6 +36,10 @@ export function Home() {
         //#region  Don't do anything if any of these is true
 
         if (val === '.') {
+            if (!state.input) {
+                return;
+            }
+
             // Check if the previous input is a closing brace
             if (lastValue === ']' || lastValue === '[') {
                 return;
@@ -50,7 +50,7 @@ export function Home() {
                 return;
             } 
         }
-
+        
         //#endregion
 
         if (isOpp) {
@@ -76,7 +76,7 @@ export function Home() {
         } else {
             // Otherwise just add the value to the end (e.g. when the previous value is a number or parentheses)
 
-            if (val === '[' && !lastValues[lastValues.length - 1].includes('"')) {
+            if (val === '[' && !lastValues[lastValues.length - 1].includes('"') && !isFirstValue) {
                 setState({
                     ...state,
                     input: `${state.input + `,"*",` + val.toString()}`,
@@ -84,7 +84,7 @@ export function Home() {
             } else {
                 setState({
                     ...state,
-                    input: `${state.input + val.toString()}`,
+                    input: `${state.input + val.toString()}`.replaceAll(',0', ','),
                 });
             }
         }
@@ -266,8 +266,6 @@ export function Home() {
 
     return (
         <Box className="custom-container" sx={{
-            // maxWidth: '375px !important',
-            // width: '43%',
             padding: '34px 3.4%',
             maxWidth: '375px',
             height: '90%',
@@ -287,7 +285,7 @@ export function Home() {
                 fontSize: '25px',
                 minHeight: 25,
             }}>
-                {parseStack(processedInput)}
+                <span>{parseStack(processedInput)}</span>
             </Box>
             <Output output={inputStringToOutputString(state.input)} />
             <Buttons negate={negate} buttonPressed={buttonPressed} deleteChar={deleteChar} resetInput={resetInput} />
