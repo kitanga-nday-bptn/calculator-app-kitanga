@@ -1,13 +1,16 @@
 TODO
 ====
 
-[ ] negative numbers
-[ ] mobile view
-[ ] multiple dots
+[x] negative numbers
+[x] mobile view
+[x] multiple dots
 [x] Delete function
 
 ## What I've done
 
-- Delete function
-- Added quality of life features such as automatically adding a multiplication sign if the previous input was a number
+- Delete function (fix)
+- Added quality of life features such as automatically adding a multiplication sign if the previous input was a number and Automatically adding "0." when only "." is clicked on
 - Negative numbers
+- Responsive design
+
+[x] brackets * (
