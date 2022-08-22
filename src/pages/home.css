@@ -1,0 +1,25 @@
+@media screen and (min-width: 375px) and (max-width: 767px) {
+    .box-container {
+        padding: 0 10%;
+    }
+}
+@media screen and (max-width: 767px) {
+    .custom-container {
+        width: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 100% !important;
+        border-radius: 0 !important;
+        height: 100% !important;
+        flex-direction: column;
+    }
+
+    .box-container {
+        /* width: 43% !important; */
+        max-height: 52%;
+    }
+    #output {
+        /* width: 43% !important; */
+    }
+}
