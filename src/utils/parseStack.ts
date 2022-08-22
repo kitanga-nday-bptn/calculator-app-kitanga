@@ -16,16 +16,16 @@ export type StackType = (StackItem | StackItem[])[];
 export function parseStack(_stack: StackType): number | undefined {
     // const stack = convertToBigInt(_stack) as ProcessedStackType;
     // const stack = convertStack(_stack);
-    const stack = _stack.concat([]);
+    const valueArray = _stack.concat([]);
 
-    console.log(stack.join(''));
+    console.log(valueArray.join(''));
 
-    if (stack.length === 1) {
-        return stack[0] as number;
+    if (valueArray.length === 1) {
+        return valueArray[0] as number;
     }
 
     // Find an array first
-    const arrayIndex = stack.findIndex((item, ix) => {
+    const arrayIndex = valueArray.findIndex((item, ix) => {
         if (ix % 2) return false;
 
         if (Array.isArray(item)) {
@@ -38,17 +38,17 @@ export function parseStack(_stack: StackType): number | undefined {
     console.log('arrIx:', arrayIndex);
 
     if (arrayIndex > -1) {
-        const answer = parseStack(stack[arrayIndex] as StackType);
+        const answer = parseStack(valueArray[arrayIndex] as StackType);
 
         console.log('answer:', answer);
 
-        stack.splice(arrayIndex, 1, answer as number);
+        valueArray.splice(arrayIndex, 1, answer as number);
 
-        return parseStack(stack);
+        return parseStack(valueArray);
     }
 
     // Look for multiplication/division symbols
-    const divMultIndex = stack.findIndex((item, ix) => {
+    const divMultIndex = valueArray.findIndex((item, ix) => {
         // if (ix % 2 === 0) return false;
  
         if (item === Operations.MULTIPLICATION || item === Operations.DIVISION) {
@@ -64,7 +64,7 @@ export function parseStack(_stack: StackType): number | undefined {
         // Do the operation
         startOppIndex = divMultIndex - 1;
     } else {
-        const addSubIndex = stack.findIndex(item => {
+        const addSubIndex = valueArray.findIndex(item => {
             if (item === Operations.SUBTRACTION || item === Operations.ADDITION) {
                 return true;
             } else {
@@ -78,7 +78,7 @@ export function parseStack(_stack: StackType): number | undefined {
     } 
 
     // Get the numbers to operate on
-    const operands = getOperands(stack, startOppIndex);
+    const operands = getOperands(valueArray, startOppIndex);
 
     const [num1, opp, num2] = operands;
 
@@ -87,16 +87,16 @@ export function parseStack(_stack: StackType): number | undefined {
     // Do de operations!!
     const currentAnswer = operate(num1, num2, opp);
 
-    console.log("Pre-splice:", stack.join(' '))
+    console.log("Pre-splice:", valueArray.join(' '))
     console.log('StartOp:', startOppIndex);
     console.log('End Opp:', startOppIndex + 3);
     
     // Replace the calculation location with new answer
-    const local = stack.splice(startOppIndex, 3, currentAnswer);
+    const local = valueArray.splice(startOppIndex, 3, currentAnswer);
 
     console.log("Spliced out:", local)
 
-    return parseStack(stack);
+    return parseStack(valueArray);
 }
 
 function getOperands(stack: StackType, startPosition: number) {    
