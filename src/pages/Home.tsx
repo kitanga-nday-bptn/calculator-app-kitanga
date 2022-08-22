@@ -18,7 +18,8 @@ interface IState {
 export function Home() {
     // const [input, updateInput] = useInput();
     const [state, setState] = useState<IState>({
-        input: `2.3,"+",[8,"-",6],"+",3,"*",[3,"+",[8,"*",9]]`,
+        // input: `2.3,"+",[8,"-",6],"+",3,"*",[3,"+",[8,"*",9]]`,
+        input: ``,
         output: '',
         // lastInputWasOpp: true,
         // bracketsOpen: false,
@@ -288,9 +289,7 @@ export function Home() {
             }}>
                 {parseStack(processedInput)}
             </Box>
-            {/* // TODO: Place messages here */}
             <Output output={inputStringToOutputString(state.input)} />
-            {/* // TODO: Place input here */}
             <Buttons negate={negate} buttonPressed={buttonPressed} deleteChar={deleteChar} resetInput={resetInput} />
         </Box>
         // TODO: Place theme switcher
