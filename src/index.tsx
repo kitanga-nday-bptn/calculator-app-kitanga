@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Operations, parseStack } from './utils/parseStack';
+import { Operations, parseStack, StackType } from './utils/parseStack';
 import { ColorModeContextProvider } from './theme/ColorModeContext';
 import { Wrapper } from './components/Wrapper/Wrapper';
+import { stackIsValid } from './utils/stackIsValid';
+import { stackToString } from './utils/stackToString';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -84,3 +86,31 @@ const test10 = [
 ];
 console.log(`test 10 + 2 * (5 + 5) / 10:`, parseStack(test10));
 console.log('Actual answer:', 10 + 2 * (5 + 5) / 10, '\n');
+console.log('Stack to String:', stackToString(test10), '\n');
+
+const test11 = [
+  10, Operations.ADDITION, 2, Operations.MULTIPLICATION, [5, Operations.ADDITION, 5], Operations.DIVISION, 10
+];
+console.log(`test 11 + 2 * (5 + 5) / 10:`, stackIsValid(test11));
+
+const test12 = [
+  10, Operations.ADDITION, 2, Operations.MULTIPLICATION, [5, Operations.ADDITION, 5], Operations.DIVISION
+];
+console.log(`test 11 + 2 * (5 + 5) /:`, stackIsValid(test12));
+
+const test13 = [
+  10, Operations.ADDITION, 2, Operations.MULTIPLICATION, [5, Operations.ADDITION], Operations.DIVISION, 10
+];
+console.log(`test 11 + 2 * (5 +) / 10:`, stackIsValid(test13));
+const test14 = [
+  6, '-', 5, '+', 2, '/', 2
+];
+console.log('Stack to String:', stackToString(test14), '\n');
+console.log(`test 14:`, stackIsValid(test14));
+console.log(`test 14:`, parseStack(test14));
+const test15 = [
+  2.3, '+', [8, '-', 6], '+', 3, '*', [3, '+', [8, '*', 9]]
+];
+console.log('Stack to String:', stackToString(test15), '\n');
+console.log(`test 15 valid:`, stackIsValid(test15));
+console.log(`test 15:`, parseStack(test15 as StackType));
