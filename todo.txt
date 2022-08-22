@@ -1,0 +1,13 @@
+TODO
+====
+
+[ ] negative numbers
+[ ] mobile view
+[ ] multiple dots
+[x] Delete function
+
+## What I've done
+
+- Delete function
+- Added quality of life features such as automatically adding a multiplication sign if the previous input was a number
+- Negative numbers
