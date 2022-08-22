@@ -24,7 +24,7 @@ export function Buttons(props: IProps) {
         <Box className='box-container' sx={{
             // maxWidth: '375px !important',
             width: '100%',
-            maxHeight: '52%',
+            // maxHeight: '52%',
             flexGrow: 1,
         }}>
             <StyledStack>
