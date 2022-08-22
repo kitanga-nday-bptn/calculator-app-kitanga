@@ -18,7 +18,7 @@ export function parseStack(_stack: StackType): number | undefined {
     // const stack = convertStack(_stack);
     const valueArray = _stack.concat([]);
 
-    console.log(valueArray.join(''));
+    // console.log(valueArray.join(''));
 
     if (valueArray.length === 1) {
         return valueArray[0] as number;
@@ -35,12 +35,12 @@ export function parseStack(_stack: StackType): number | undefined {
         return false;
     });
 
-    console.log('arrIx:', arrayIndex);
+    // console.log('arrIx:', arrayIndex);
 
     if (arrayIndex > -1) {
         const answer = parseStack(valueArray[arrayIndex] as StackType);
 
-        console.log('answer:', answer);
+        // console.log('answer:', answer);
 
         valueArray.splice(arrayIndex, 1, answer as number);
 
@@ -82,19 +82,19 @@ export function parseStack(_stack: StackType): number | undefined {
 
     const [num1, opp, num2] = operands;
 
-    console.log("Operands:", operands.join(','))
+    // console.log("Operands:", operands.join(','))
 
     // Do de operations!!
     const currentAnswer = operate(num1, num2, opp);
 
-    console.log("Pre-splice:", valueArray.join(' '))
-    console.log('StartOp:', startOppIndex);
-    console.log('End Opp:', startOppIndex + 3);
+    // console.log("Pre-splice:", valueArray.join(' '))
+    // console.log('StartOp:', startOppIndex);
+    // console.log('End Opp:', startOppIndex + 3);
     
     // Replace the calculation location with new answer
     const local = valueArray.splice(startOppIndex, 3, currentAnswer);
 
-    console.log("Spliced out:", local)
+    // console.log("Spliced out:", local)
 
     return parseStack(valueArray);
 }
@@ -109,9 +109,9 @@ function getOperands(stack: StackType, startPosition: number) {
 }
 
 function operate(num1: number, num2: number, operation: Operations) {
-    console.log('num1:', num1);
-    console.log('num2:', num2);
-    console.log('opp:', operation);
+    // console.log('num1:', num1);
+    // console.log('num2:', num2);
+    // console.log('opp:', operation);
 
     switch (operation) {
         case Operations.ADDITION:
